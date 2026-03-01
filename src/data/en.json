@@ -1,0 +1,48 @@
+{
+  "services":[
+    {
+      "title":"Pilates for Rehabilitation",
+      "desc":"Designed for individuals with musculoskeletal conditions or postural imbalances such as neck pain, lower back pain, scoliosis, herniated discs, spinal stenosis, knee pain, and plantar fasciitis."
+    },
+    {
+      "title":"Prenatal & Postnatal",
+      "desc":"Supports mothers during and after pregnancy by strengthening muscles, improving flexibility, and restoring pelvic floor and core stability."
+    },
+    {
+      "title":"Athletes",
+      "desc":"Enhances performance through targeted muscle activation and sport-specific functional training while supporting injury recovery."
+    },
+    {
+      "title":"Elderly",
+      "desc":"Improves strength, flexibility, and balance for safer movement and a better quality of life."
+    }
+  ],
+
+  "packages":[
+    {
+      "title":"Trial Session",
+      "desc":"Experience Pilates one-on-one at a special rate while assessing posture and personal goals."
+    },
+    {
+      "title":"Private Package",
+      "desc":"Personalized training designed specifically for your body and goals."
+    },
+    {
+      "title":"Family Package",
+      "desc":"Train with friends or loved ones with customized programs for each participant."
+    }
+  ],
+
+  "about":{
+    "vision":"Revive Your Body • Refresh Your Mind • Rediscover Your Strength",
+    "desc":"We are a private Pilates studio with five dedicated rooms designed for focused, safe, and comfortable training. All instructors are licensed Physical Therapists who provide personalized programs based on posture analysis, movement assessment, and rehabilitation principles."
+  },
+
+  "contact":{
+    "address":"2nd Floor, Cove Hill Project, 1888 Charoen Krung Road, Bangkok 10120",
+    "phone":"+66 82 451 5155",
+    "email":"revivepilatesbkk@gmail.com",
+    "line":"@revivepilates",
+    "instagram":"@revivepilatesbkk"
+  }
+}

@@ -10,11 +10,27 @@ module.exports = function renderPug(filePath) {
     const srcPath = upath.resolve(upath.dirname(__filename), '../src');
 
     console.log(`### INFO: Rendering ${filePath} to ${destPath}`);
-    const html = pug.renderFile(filePath, {
+
+    // Provide a default language context so templates using i18n keys
+    // (services, packages, about, contact, etc.) won't blow up when
+    // run through the generic build-pug task. We default to English but
+    // you can extend this later if you detect env or filename.
+    let pugData = {
         doctype: 'html',
         filename: filePath,
         basedir: srcPath
-    });
+    };
+    try {
+        const { loadLang } = require('./i18n');
+        const lang = 'en';
+        const data = loadLang(lang);
+        pugData = Object.assign(pugData, { lang }, data);
+    } catch (e) {
+        // if something goes wrong loading language, continue without it
+        console.warn('warning: failed to load default language data', e.message);
+    }
+
+    const html = pug.renderFile(filePath, pugData);
 
     const destPathDirname = upath.dirname(destPath);
     if (!sh.test('-e', destPathDirname)) {
