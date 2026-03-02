@@ -11256,6 +11256,7 @@ section#contact {
   background-image: url("../assets/img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
+  color: #fff;
 }
 section#contact .section-heading {
   color: #fff;
@@ -11266,6 +11267,7 @@ section#contact form#contactForm .form-group {
 section#contact form#contactForm .form-group input,
 section#contact form#contactForm .form-group textarea {
   padding: 1.25rem;
+  color: #fff;
 }
 section#contact form#contactForm .form-group input.form-control {
   height: auto;

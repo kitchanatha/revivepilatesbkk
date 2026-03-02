@@ -8,6 +8,9 @@ section#contact {
     background-repeat: no-repeat;
     background-position: center;
 
+    // make all text in this dark section light
+    color: $white;
+
     .section-heading {
         color: $white;
     }
@@ -19,6 +22,7 @@ section#contact {
             input,
             textarea {
                 padding: 1.25rem;
+                color: $white; // ensure form text is legible on dark bg
             }
 
             input.form-control {
