@@ -356,6 +356,11 @@ html(lang=lang)
                             if contact.email
                                 p
                                     a(href=`mailto:${contact.email}`)= contact.email
+                            if contact.facebook
+                                p.mb-1
+                                    a.d-inline-flex.align-items-center.text-white(href=contact.facebook, target="_blank")
+                                        i.fab.fa-facebook-f.me-2
+                                        | Facebook
                             if contact.line
                                 p.mb-1
                                     - const lineId = contact.line.startsWith('@') ? contact.line.slice(1) : contact.line
@@ -458,12 +463,15 @@ html(lang=lang)
                     .col-lg-4.text-lg-start
                         | Copyright &copy; Revivepilatesbkk 2026
                     .col-lg-4.my-3.my-lg-0
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Twitter')
-                            i.fab.fa-twitter
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Facebook')
+                        // line icon
+                        a.btn.btn-dark.btn-social.mx-2(href='https://line.me/R/ti/p/%40revivepilates', aria-label='Line', target='_blank')
+                            i.fab.fa-line
+                        // facebook icon
+                        a.btn.btn-dark.btn-social.mx-2(href='https://web.facebook.com/people/Revive-Pilates-Studio-Wellness/61584033732719/?_rdc=1&_rdr#', aria-label='Facebook', target='_blank')
                             i.fab.fa-facebook-f
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='LinkedIn')
-                            i.fab.fa-linkedin-in
+                        // instagram icon
+                        a.btn.btn-dark.btn-social.mx-2(href='https://www.instagram.com/revivepilatesbkk', aria-label='Instagram', target='_blank')
+                            i.fab.fa-instagram
                     .col-lg-4.text-lg-end
                         a.link-dark.text-decoration-none.me-3(href='#!') Privacy Policy
                         a.link-dark.text-decoration-none(href='#!') Terms of Use
