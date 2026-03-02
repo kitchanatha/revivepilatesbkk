@@ -37,7 +37,7 @@ html(lang=lang)
                         li.nav-item
                             a.nav-link(href='#services') Services
                         li.nav-item
-                            a.nav-link(href='#portfolio') Portfolio
+                            a.nav-link(href='#portfolio') Galleries
                         li.nav-item
                             a.nav-link(href='#about') About
                         li.nav-item
@@ -96,13 +96,13 @@ html(lang=lang)
         section#portfolio.page-section.bg-light
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Portfolio
+                    h2.section-heading.text-uppercase Galleries
                     //- h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
                 .row
                     .col-lg-4.col-sm-6.mb-4
                         // Portfolio item 1
                         .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal1', title='Click to view larger')
+                            a.portfolio-link(href='/assets/img/portfolio/P1033715.jpg', target='_blank', title='Open full image in new tab')
                                 .portfolio-hover
                                     .portfolio-hover-content
                                         | Click or hover to enlarge
@@ -113,7 +113,7 @@ html(lang=lang)
                     .col-lg-4.col-sm-6.mb-4
                         // Portfolio item 2
                         .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal2', title='Click to view larger')
+                            a.portfolio-link(href='/assets/img/portfolio/P1033772.jpg', target='_blank', title='Open full image in new tab')
                                 .portfolio-hover
                                     .portfolio-hover-content
                                         | Click or hover to enlarge
@@ -124,7 +124,7 @@ html(lang=lang)
                     .col-lg-4.col-sm-6.mb-4
                         // Portfolio item 3
                         .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal3', title='Click to view larger')
+                            a.portfolio-link(href='/assets/img/portfolio/P1033849.jpg', target='_blank', title='Open full image in new tab')
                                 .portfolio-hover
                                     .portfolio-hover-content
                                         | Click or hover to enlarge
@@ -135,7 +135,7 @@ html(lang=lang)
                     .col-lg-4.col-sm-6.mb-4.mb-lg-0
                         // Portfolio item 4
                         .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal4', title='Click to view larger')
+                            a.portfolio-link(href='/assets/img/portfolio/P1033914.jpg', target='_blank', title='Open full image in new tab')
                                 .portfolio-hover
                                     .portfolio-hover-content
                                         | Click or hover to enlarge
@@ -146,7 +146,7 @@ html(lang=lang)
                     .col-lg-4.col-sm-6.mb-4.mb-sm-0
                         // Portfolio item 5
                         .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal5', title='Click to view larger')
+                            a.portfolio-link(href='/assets/img/portfolio/P1033932.jpg', target='_blank', title='Open full image in new tab')
                                 .portfolio-hover
                                     .portfolio-hover-content
                                         | Click or hover to enlarge
@@ -157,7 +157,7 @@ html(lang=lang)
                     .col-lg-4.col-sm-6
                         // Portfolio item 6
                         .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal6', title='Click to view larger')
+                            a.portfolio-link(href='/assets/img/portfolio/P1034101.jpg', target='_blank', title='Open full image in new tab')
                                 .portfolio-hover
                                     .portfolio-hover-content
                                         | Click or hover to enlarge
@@ -373,88 +373,6 @@ html(lang=lang)
                                     a.d-inline-flex.align-items-center.text-white(href=`https://www.instagram.com/${instaId}`, target="_blank")
                                         i.fab.fa-instagram.me-2
                                         | #{contact.instagram}
-
-                // * * * * * * * * * * * * * * *
-                // * * SB Forms Contact Form * *
-                // * * * * * * * * * * * * * * *
-
-                // This form is pre-integrated with SB Forms.
-                // To make this form functional, sign up at
-                // https://startbootstrap.com/solution/contact-forms
-                // to get an API token!
-
-                form#contactForm(data-sb-form-api-token='API_TOKEN')
-                    .row.align-items-stretch.mb-5
-                        .col-md-6
-                            .form-group
-
-                                // Name input
-                                input#name.form-control(
-                                    type='text',
-                                    placeholder='Your Name *',
-                                    data-sb-validations='required'
-                                )
-                                .invalid-feedback(data-sb-feedback='name:required')
-                                    | A name is required.
-
-                            .form-group
-
-                                // Email address input
-                                input#email.form-control(
-                                    type='email',
-                                    placeholder='Your Email *',
-                                    data-sb-validations='required,email'
-                                )
-                                .invalid-feedback(data-sb-feedback='email:required')
-                                    | An email is required.
-                                .invalid-feedback(data-sb-feedback='email:email')
-                                    | Email is not valid.
-
-                            .form-group.mb-md-0
-
-                                // Phone number input
-                                input#phone.form-control(
-                                    type='tel',
-                                    placeholder='Your Phone *',
-                                    data-sb-validations='required'
-                                )
-                                .invalid-feedback(data-sb-feedback='phone:required')
-                                    | A phone number is required.
-
-                        .col-md-6
-                            .form-group.form-group-textarea.mb-md-0
-
-                                // Message input
-                                textarea#message.form-control(
-                                    placeholder='Your Message *',
-                                    data-sb-validations='required'
-                                )
-                                .invalid-feedback(data-sb-feedback='message:required')
-                                    | A message is required.
-
-                    // Submit success message
-                    //
-                    // This is what your users will see when the form
-                    // has successfully submitted
-
-                    #submitSuccessMessage.d-none
-                        .text-center.text-white.mb-3
-                            .fw-bolder Form submission successful!
-                            | To activate this form, sign up at
-                            br
-                            a(href='https://startbootstrap.com/solution/contact-forms') https://startbootstrap.com/solution/contact-forms
-
-                    // Submit error message
-                    //
-                    // This is what your users will see when there is
-                    // an error submitting the form
-
-                    #submitErrorMessage.d-none
-                        .text-center.text-danger.mb-3 Error sending message!
-
-                    // Submit Button
-                    .text-center
-                        button#submitButton.btn.btn-primary.btn-xl.text-uppercase.disabled(type='submit') Send Message
 
         // Footer
         footer.footer.py-4
