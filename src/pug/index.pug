@@ -341,6 +341,11 @@ html(lang=lang)
                 .text-center
                     h2.section-heading.text-uppercase Contact Us
                     h3.section-subheading.text-muted Get in touch
+                // embedded google map
+                .map-container.mt-4
+                    // embed via direct coordinates
+                    iframe(src="https://maps.google.com/maps?q=13.7100002,100.510921&z=17&output=embed" allowfullscreen="" loading="lazy")
+                a.text-white.mt-2.d-inline-block(href="https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8", target="_blank") Open in Google Maps
                 if contact
                     .row.mt-4
                         .col-lg-12.text-center
@@ -352,9 +357,17 @@ html(lang=lang)
                                 p
                                     a(href=`mailto:${contact.email}`)= contact.email
                             if contact.line
-                                p= contact.line
+                                p.mb-1
+                                    - const lineId = contact.line.startsWith('@') ? contact.line.slice(1) : contact.line
+                                    a.d-inline-flex.align-items-center.text-white(href=`https://line.me/R/ti/p/%40${lineId}`, target="_blank")
+                                        i.fab.fa-line.me-2
+                                        | #{contact.line}
                             if contact.instagram
-                                p= contact.instagram
+                                p.mb-1
+                                    - const instaId = contact.instagram.startsWith('@') ? contact.instagram.slice(1) : contact.instagram
+                                    a.d-inline-flex.align-items-center.text-white(href=`https://www.instagram.com/${instaId}`, target="_blank")
+                                        i.fab.fa-instagram.me-2
+                                        | #{contact.instagram}
 
                 // * * * * * * * * * * * * * * *
                 // * * SB Forms Contact Form * *
@@ -443,7 +456,7 @@ html(lang=lang)
             .container
                 .row.align-items-center
                     .col-lg-4.text-lg-start
-                        | Copyright &copy; Your Website 2023
+                        | Copyright &copy; Revivepilatesbkk 2026
                     .col-lg-4.my-3.my-lg-0
                         a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Twitter')
                             i.fab.fa-twitter
