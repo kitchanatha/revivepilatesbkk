@@ -10987,6 +10987,13 @@ header.masthead .masthead-heading {
   margin-left: auto;
   margin-right: auto;
 }
+#portfolio .portfolio-item img {
+  transition: transform 0.25s ease-in-out;
+}
+#portfolio .portfolio-item:hover img {
+  transform: scale(1.1);
+  cursor: zoom-in;
+}
 #portfolio .portfolio-item .portfolio-link {
   position: relative;
   display: block;

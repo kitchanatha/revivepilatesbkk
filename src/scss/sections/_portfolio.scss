@@ -8,6 +8,15 @@
         margin-left: auto;
         margin-right: auto;
 
+        img {
+            transition: transform 0.25s ease-in-out;
+        }
+
+        &:hover img {
+            transform: scale(1.1);
+            cursor: zoom-in;
+        }
+
         .portfolio-link {
             position: relative;
             display: block;
