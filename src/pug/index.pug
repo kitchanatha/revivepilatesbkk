@@ -14,6 +14,7 @@ html(lang=lang)
             const instaId = contact.instagram.startsWith('@') ? contact.instagram.slice(1) : contact.instagram
             const lineHref = `https://line.me/R/ti/p/%40${lineId}`
             const instaHref = `https://www.instagram.com/${instaId}`
+            const telHref = `tel:${contact.phone.replace(/[^\d+]/g, '')}`
             const schema = {
                 '@context': 'https://schema.org',
                 '@type': 'HealthAndBeautyBusiness',
@@ -109,7 +110,7 @@ html(lang=lang)
                             a.nav-link(href='#team') Team
                         li.nav-item
                             a.nav-link(href='#contact') Contact
-                        li.nav-item.ms-3
+                        li.nav-item.ms-lg-3.mt-2.mt-lg-0
                             .btn-group(role='group')
                                 a.btn.btn-sm(
                                     href='/en',
@@ -121,6 +122,16 @@ html(lang=lang)
                                     class=lang === 'th' ? 'btn-primary' : 'btn-outline-primary',
                                     role='button'
                                 ) TH
+                        // Always-visible quick contact — deliberately outside the
+                        // language switcher group so it keeps its own tap targets.
+                        li.nav-item.ms-lg-2.mt-2.mt-lg-0
+                            a.btn.btn-sm.btn-outline-light(href=telHref, aria-label=`Call ${contact.phone}`)
+                                i.fas.fa-phone.me-1
+                                span.d-lg-none= contact.phone
+                        li.nav-item.ms-lg-2.mt-2.mt-lg-0
+                            a.btn.btn-sm.btn-success(href=lineHref, target='_blank', aria-label='Chat with Revive Pilates Bangkok on LINE')
+                                i.fab.fa-line.me-1
+                                | LINE
         // Masthead
         header.masthead
             .container
