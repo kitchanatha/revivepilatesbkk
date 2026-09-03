@@ -17,6 +17,19 @@ body {
     // overflow-x: hidden;
 }
 
+// Safety net: since overflow-x above is disabled, a long word or phrase in
+// any heading (English or Thai) must never be able to force horizontal
+// overflow on its own — wrap instead of spilling past the viewport edge.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 // Adjust the line height of paragraphs
 
 p {

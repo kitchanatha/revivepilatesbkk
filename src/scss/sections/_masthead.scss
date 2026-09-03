@@ -15,19 +15,29 @@ header.masthead {
     background-size: cover;
 
     .masthead-subheading {
-        font-size: 1.5rem;
+        // Fluid size: scales smoothly between mobile and the md breakpoint below,
+        // instead of jumping straight to a fixed 1.5rem that can be too large
+        // for narrow phones once the copy gets longer.
+        font-size: clamp(1rem, 0.7rem + 2vw, 1.5rem);
         font-style: italic;
-        line-height: 1.5rem;
+        line-height: 1.3;
         margin-bottom: 25px;
         font-family: $subheadings-font-family;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .masthead-heading {
-        font-size: 3.25rem;
+        // Fluid size: prevents the hero H1 from overflowing narrow viewports.
+        // At ~375px this renders around 33px instead of the fixed 52px that
+        // was pushing "PHYSIOTHERAPY" past the edge of the screen.
+        font-size: clamp(1.65rem, 0.9rem + 5vw, 3.25rem);
         font-weight: 700;
-        line-height: 3.25rem;
+        line-height: 1.2;
         margin-bottom: 2rem;
         font-family: $headings-font-family;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 }
 
