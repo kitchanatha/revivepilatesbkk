@@ -7,8 +7,10 @@
     text-align: center;
 
     img {
-        width: 14rem;
-        height: 14rem;
+        // Smaller on mobile so 4 stacked cards don't turn into a very tall
+        // scroll; back to the original 14rem once there's room at md+.
+        width: 9rem;
+        height: 9rem;
         object-fit: cover;
         border: 0.5rem solid fade-out($black, 0.9);
     }
@@ -16,6 +18,13 @@
     h4 {
         margin-top: 1.5rem;
         margin-bottom: 0;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .team-member img {
+        width: 14rem;
+        height: 14rem;
     }
 }
 
