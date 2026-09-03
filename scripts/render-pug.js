@@ -4,30 +4,37 @@ const upath = require('upath');
 const pug = require('pug');
 const sh = require('shelljs');
 const prettier = require('prettier');
+const { loadLang } = require('./i18n');
 
-module.exports = function renderPug(filePath) {
-    const destPath = filePath.replace(/src\/pug\//, 'dist/').replace(/\.pug$/, '.html');
+/**
+ * Render a pug page for a specific language + route.
+ *
+ * @param {string} filePath - source .pug file, e.g. src/pug/index.pug
+ * @param {object} [options]
+ * @param {string} [options.lang] - 'en' | 'th'. Defaults to 'en'.
+ * @param {string} [options.routePath] - the public URL path this build represents,
+ *   e.g. '/', '/en', '/th'. Used for canonical/hreflang tags. Defaults to '/en'.
+ * @param {string} [options.destPath] - explicit dist output path. Defaults to the
+ *   src/pug -> dist mapping (e.g. src/pug/index.pug -> dist/index.html).
+ */
+module.exports = function renderPug(filePath, options = {}) {
+    const lang = options.lang || 'en';
+    const routePath = options.routePath || '/en';
+    const destPath = options.destPath || filePath.replace(/src\/pug\//, 'dist/').replace(/\.pug$/, '.html');
     const srcPath = upath.resolve(upath.dirname(__filename), '../src');
 
-    console.log(`### INFO: Rendering ${filePath} to ${destPath}`);
+    console.log(`### INFO: Rendering ${filePath} [lang=${lang}, route=${routePath}] to ${destPath}`);
 
-    // Provide a default language context so templates using i18n keys
-    // (services, packages, about, contact, etc.) won't blow up when
-    // run through the generic build-pug task. We default to English but
-    // you can extend this later if you detect env or filename.
     let pugData = {
         doctype: 'html',
         filename: filePath,
         basedir: srcPath
     };
     try {
-        const { loadLang } = require('./i18n');
-        const lang = 'en';
         const data = loadLang(lang);
-        pugData = Object.assign(pugData, { lang }, data);
+        pugData = Object.assign(pugData, { lang, routePath }, data);
     } catch (e) {
-        // if something goes wrong loading language, continue without it
-        console.warn('warning: failed to load default language data', e.message);
+        console.warn('warning: failed to load language data for', lang, e.message);
     }
 
     const html = pug.renderFile(filePath, pugData);

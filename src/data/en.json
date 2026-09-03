@@ -1,4 +1,17 @@
 {
+  "meta": {
+    "title": "Reformer Pilates Studio in Charoen Krung, Bangkok | Revive Pilates",
+    "description": "Private reformer Pilates studio at Cove Hill, Charoen Krung. Every instructor is a licensed physical therapist. Rehab, prenatal, sports & beginner sessions.",
+    "ogLocale": "en_US"
+  },
+
+  "hero": {
+    "h1": "Reformer Pilates & Physiotherapy in Charoen Krung, Bangkok",
+    "sub": "Personalized Pilates led by instructors with physical-therapy backgrounds, for strength, posture, mobility and confident movement.",
+    "ctaPrimary": "Book / Chat on LINE",
+    "ctaSecondary": "Get Directions"
+  },
+
   "services":[
     {
       "title":"Pilates for Rehabilitation",
@@ -31,6 +44,15 @@
       "title":"Family Package",
       "desc":"Train with friends or loved ones with customized programs for each participant."
     }
+  ],
+
+  "portfolio": [
+    { "file": "P1033932.jpg", "alt": "Instructor guiding a client through a leg-extension exercise on a Pilates wunda chair at Revive Pilates Bangkok" },
+    { "file": "P1033972.jpg", "alt": "Client balancing in an inverted stretch on a Pilates ladder barrel, assisted by an instructor" },
+    { "file": "P1034054.jpg", "alt": "Instructor supporting a client's reaching-arm posture during a seated Pilates chair exercise" },
+    { "file": "P1034110.jpg", "alt": "Instructor assisting a client's extended-leg balance on a Pilates ladder barrel" },
+    { "file": "P1034155.jpg", "alt": "Instructor guiding a client through a rotation exercise with a small ball on the Pilates chair" },
+    { "file": "P1034196.jpg", "alt": "Instructor assisting a client's side-stretch position on the Pilates ladder barrel" }
   ],
 
   "about":{
