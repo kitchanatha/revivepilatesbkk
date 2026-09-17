@@ -67,5 +67,97 @@
     "line":"@revivepilates",
     "instagram":"@revivepilatesbkk",
     "facebook":"https://web.facebook.com/people/Revive-Pilates-Studio-Wellness/61584033732719/?_rdc=1&_rdr#"
+  },
+
+  "landing": {
+    "meta": {
+      "title": "Book a Trial Reformer Pilates Session in Charoen Krung, Bangkok | Revive Pilates",
+      "description": "Try a private, one-on-one reformer Pilates session led by a licensed physical therapist. Book your trial at Revive Pilates, Cove Hill, Charoen Krung, Bangkok.",
+      "ogLocale": "en_US"
+    },
+
+    "hero": {
+      "eyebrow": "New to Revive?",
+      "h1": "Try Your First Reformer Pilates Session, One-on-One With a Physical Therapist",
+      "sub": "A private trial session at Cove Hill, Charoen Krung — posture assessment, personalized guidance, and a real feel for how Revive trains.",
+      "ctaPrimary": "Book Your Trial on LINE",
+      "ctaSecondary": "Call Us"
+    },
+
+    "benefits": [
+      {
+        "icon": "user-md",
+        "title": "Every Instructor Is a Licensed PT",
+        "desc": "Sessions are led by physical therapists, not just certified instructors — trained to read posture and movement, not only count reps."
+      },
+      {
+        "icon": "door-closed",
+        "title": "Fully Private Studio",
+        "desc": "Five dedicated rooms, one-on-one — no shared reformer lines, no group pace to keep up with."
+      },
+      {
+        "icon": "clipboard-list",
+        "title": "Built Around Your Goals",
+        "desc": "Whether it's rehab, prenatal/postnatal, sport performance, or general strength, your trial is shaped around what you actually need."
+      }
+    ],
+
+    "steps": [
+      {
+        "num": "1",
+        "title": "Message Us on LINE",
+        "desc": "Tell us your goals and a time that works — we'll confirm your trial slot directly."
+      },
+      {
+        "num": "2",
+        "title": "Posture & Goals Assessment",
+        "desc": "Your instructor starts by understanding your body, any aches or limitations, and what you want to work on."
+      },
+      {
+        "num": "3",
+        "title": "Your One-on-One Session",
+        "desc": "A personalized reformer session, fully guided — so you leave knowing exactly what Revive training feels like."
+      }
+    ],
+
+    "offer": {
+      "title": "Trial Session",
+      "desc": "Experience Pilates one-on-one at a special rate while assessing posture and personal goals.",
+      "note": "Ask about current trial pricing when you message us on LINE.",
+      "cta": "Claim Your Trial Session"
+    },
+
+    "credibility": {
+      "text": "All of our instructors are licensed Physical Therapists, and every program is built on posture analysis, movement assessment, and rehabilitation principles — for rehab, prenatal/postnatal, athletes, and beginners alike."
+    },
+
+    "location": {
+      "heading": "Find Us at Cove Hill",
+      "sub": "2nd floor, Charoen Krung — easy to reach, easy to find."
+    },
+
+    "faq": [
+      {
+        "q": "Do I need any Pilates experience?",
+        "a": "No experience needed — many clients try Revive as complete beginners. Because every instructor is a licensed physical therapist, your trial starts with a posture and goals assessment so exercises are matched to your body from the start."
+      },
+      {
+        "q": "What should I wear?",
+        "a": "Comfortable, stretchy clothing you can move freely in. Grip socks are recommended for reformer work — bring your own or ask us about picking up a pair."
+      },
+      {
+        "q": "Can my trial focus on a specific goal, like rehab or prenatal care?",
+        "a": "Yes. Let your instructor know your focus — rehabilitation, prenatal/postnatal, sports performance, or general strength and mobility — when you book on LINE, and your session will be tailored around it."
+      },
+      {
+        "q": "How do I book?",
+        "a": "Message us on LINE (@revivepilates) with your preferred day and time, and we'll confirm your trial slot."
+      }
+    ],
+
+    "ctaBand": {
+      "heading": "Ready to feel the difference of one-on-one, physical-therapist-led Pilates?",
+      "cta": "Book Your Trial on LINE"
+    }
   }
 }

@@ -1,0 +1,158 @@
+//
+// Trial landing page ("/trial", "/trial/th") styling
+//
+// A dedicated conversion page for trial-booking / paid-ads traffic — kept
+// visually consistent with the main site's brand ($primary yellow, dark
+// text, Montserrat/Roboto Slab) but with its own hero, step list, offer
+// callout and FAQ layout not used anywhere else on the site.
+//
+
+// .trial-page itself carries no rules — this template reuses '.page-section'
+// (see _global.scss) for spacing so it stays consistent with the homepage
+// without duplicating the breakpoint rules.
+
+// Hero — uses a real studio photo (an existing portfolio image) instead of
+// the unused stock "header-bg.jpg" flat-lay, with a dark scrim so white
+// text stays legible over any crop of the photo.
+header.trial-hero {
+    position: relative;
+    padding-top: 6rem + 4.5rem;
+    padding-bottom: 6rem;
+    background-image: linear-gradient(rgba(20, 16, 14, 0.6), rgba(20, 16, 14, 0.75)), url("../assets/img/portfolio/P1034054.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center 20%;
+    background-size: cover;
+    color: $white;
+
+    .trial-hero-inner {
+        max-width: 40rem;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .trial-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: $headings-letter-spacing;
+        font-family: $headings-font-family;
+        font-weight: $headings-font-weight;
+        color: $primary;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .trial-heading {
+        font-size: clamp(1.75rem, 1rem + 4.5vw, 3.25rem);
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 1.5rem;
+        font-family: $headings-font-family;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .trial-subheading {
+        font-size: clamp(1rem, 0.8rem + 1vw, 1.25rem);
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    header.trial-hero {
+        padding-top: 10rem + 4.5rem;
+        padding-bottom: 10rem;
+    }
+}
+
+// How it works — numbered steps
+.trial-step {
+    .trial-step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 100%;
+        background-color: $primary;
+        color: $gray-900;
+        font-family: $headings-font-family;
+        font-weight: $headings-font-weight;
+        font-size: 1.5rem;
+    }
+}
+
+// Trial offer callout box
+.trial-offer-box {
+    max-width: 36rem;
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: $white;
+    border: 2px solid $primary;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+
+    h3 {
+        font-family: $headings-font-family;
+        font-weight: $headings-font-weight;
+        letter-spacing: $headings-letter-spacing;
+        margin-bottom: 1rem;
+    }
+
+    .trial-offer-desc {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .trial-offer-note {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: $gray-600;
+        margin-bottom: 1.75rem;
+    }
+}
+
+// Credibility strip
+.trial-credibility-photo {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+}
+
+// FAQ
+.trial-faq {
+    max-width: 44rem;
+
+    .trial-faq-item {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid $gray-300;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    .trial-faq-q {
+        font-family: $headings-font-family;
+        font-weight: $headings-font-weight;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+// Repeated CTA band, just above the footer
+.trial-cta-band {
+    padding: 5rem 0;
+    background-color: $primary;
+    text-align: center;
+
+    .trial-cta-heading {
+        max-width: 40rem;
+        margin: 0 auto;
+        font-family: $headings-font-family;
+        font-weight: $headings-font-weight;
+        letter-spacing: $headings-letter-spacing;
+        color: $gray-900;
+        font-size: clamp(1.25rem, 1rem + 1.5vw, 1.75rem);
+    }
+}

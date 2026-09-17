@@ -1,27 +1,12 @@
 'use strict';
 
+// NOTE: this file previously also re-rendered src/pug/index.pug straight to
+// dist/en/index.html and dist/th/index.html, without a routePath. It ran
+// right after `build:pug` in the `npm run build` chain (see package.json),
+// so on every build it silently overwrote build-pug.js's correct output
+// with a version missing routePath — breaking the canonical/hreflang tags
+// build-pug.js (see its comment) was specifically reworked to fix. Removed;
+// build-pug.js is now the only thing that renders index.pug/trial.pug.
 const renderScripts = require('./render-scripts');
-const fs = require("fs");
-const { loadLang } = require("./i18n");
-const pug = require("pug");
-const template = pug.compileFile("src/pug/index.pug");
-const langs = ["en","th"];
 
-langs.forEach(lang=>{
-  const data = loadLang(lang);
-
-  const html = template({
-    ...data,
-    lang
-  });
-
-
-  // create folder first
-  fs.mkdirSync(`dist/${lang}`, { recursive: true });
-
-  fs.writeFileSync(
-    `dist/${lang}/index.html`,
-    html
-  );
-});
 renderScripts();
