@@ -1,3 +1,5 @@
+include mixins/team.pug
+
 doctype html
 html(lang=lang)
 
@@ -71,10 +73,20 @@ html(lang=lang)
         // do not add either until the studio confirms real hours / has genuine reviews to report.
         script(type='application/ld+json')!= JSON.stringify(schema)
 
-        // TODO: Google Search Console verification tag goes here once generated, e.g.
-        // meta(name='google-site-verification', content='REPLACE_ME')
-        // TODO: GA4 goes here once a measurement ID exists, e.g.
-        // script(async, src='https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME')
+        // Google Search Console ownership verification. No-op until
+        // src/data/site.json has a gscVerification value.
+        if site.gscVerification
+            meta(name='google-site-verification', content=site.gscVerification)
+
+        // Google Analytics 4. No-op until src/data/site.json has a
+        // gaMeasurementId value — safe to ship as-is before that exists.
+        if site.gaMeasurementId
+            script(async, src=`https://www.googletagmanager.com/gtag/js?id=${site.gaMeasurementId}`)
+            script.
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '#{site.gaMeasurementId}');
 
         // Favicon
         link(rel='icon', type='image/x-icon', href='/assets/favicon.ico')
@@ -125,11 +137,11 @@ html(lang=lang)
                         // Always-visible quick contact — deliberately outside the
                         // language switcher group so it keeps its own tap targets.
                         li.nav-item.ms-lg-2.mt-2.mt-lg-0
-                            a.btn.btn-sm.btn-outline-light(href=telHref, aria-label=`Call ${contact.phone}`)
+                            a.btn.btn-sm.btn-outline-light(href=telHref, aria-label=`Call ${contact.phone}`, data-gtag-event='call_click', data-gtag-location='nav')
                                 i.fas.fa-phone.me-1
                                 span.d-lg-none= contact.phone
                         li.nav-item.ms-lg-2.mt-2.mt-lg-0
-                            a.btn.btn-sm.btn-success(href=lineHref, target='_blank', aria-label='Chat with Revive Pilates Bangkok on LINE')
+                            a.btn.btn-sm.btn-success(href=lineHref, target='_blank', aria-label='Chat with Revive Pilates Bangkok on LINE', data-gtag-event='contact_click', data-gtag-location='nav')
                                 i.fab.fa-line.me-1
                                 | LINE
         // Masthead
@@ -138,8 +150,8 @@ html(lang=lang)
                 h1.masthead-heading.text-uppercase= hero.h1
                 p.masthead-subheading= hero.sub
                 .mt-4
-                    a.btn.btn-primary.btn-xl.text-uppercase.me-2.mb-2(href=lineHref, target='_blank')= hero.ctaPrimary
-                    a.btn.btn-outline-light.btn-xl.text-uppercase.mb-2(href='https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8', target='_blank')= hero.ctaSecondary
+                    a.btn.btn-primary.btn-xl.text-uppercase.me-2.mb-2(href=lineHref, target='_blank', data-gtag-event='contact_click', data-gtag-location='hero')= hero.ctaPrimary
+                    a.btn.btn-outline-light.btn-xl.text-uppercase.mb-2(href='https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8', target='_blank', data-gtag-event='directions_click', data-gtag-location='hero')= hero.ctaSecondary
 
         // Services
         section#services.page-section
@@ -212,65 +224,7 @@ html(lang=lang)
             .container
                 .text-center
                     h2.section-heading.text-uppercase Our Amazing Team
-                .row
-                    .col-lg-3
-                        .team-member
-                            .member-top
-                                img.mx-auto.rounded-circle(src='/assets/img/team/bute.jpg', alt='Bute, Physiotherapy & Pilates instructor at Revive Pilates Bangkok')
-                                h4 Bute
-                                p.text-muted Physiotherapy & Pilates instructor
-                                p.text-muted “Small movements, big changes”
-                            h5 Educational Background
-                            ul
-                                li Bachelor of Science in Allied Health Sciences (Physical therapy), Thammasat University
-                            h5 Experience & Approach
-                            ul
-                                li Experience in physiotherapy internships in hospital settings, as well as providing physiotherapy treatment for football players and runners
-                                li Skilled in conducting physiotherapy assessments, analyzing body alignment and movement patterns to treat and prevent injuries, using Pilates-based exercise as the primary approach
-                    .col-lg-3
-                        .team-member
-                            .member-top
-                                img.mx-auto.rounded-circle(src='/assets/img/team/nam.jpg', alt='Nam, Physiotherapy & Pilates instructor at Revive Pilates Bangkok')
-                                h4 Nam
-                                p.text-muted Physiotherapy & Pilates instructor
-                                p.text-muted “Every Move Builds Your Strength”
-                            h5 Educational Background
-                            ul
-                                li Bachelor of Science in Allied Health Sciences (Physical Therapy), Thammasat University, graduated with First-Class Honors
-                            h5 Experience & Approach
-                            ul
-                                li Practical experience in physical therapy and movement rehabilitation through academic training and clinical internships
-                                li Experience managing musculoskeletal pain, movement dysfunctions, athletes and runners for injury prevention and functional movement improvement
-                                li Application of physiotherapy principles in Pilates to enhance safe movement, reduce pain, core strength, and improved posture
-                    .col-lg-3
-                        .team-member
-                            .member-top
-                                img.mx-auto.rounded-circle(src='/assets/img/team/tonnam.jpg', alt='Tonnam, Physiotherapy & Pilates instructor at Revive Pilates Bangkok')
-                                h4 Tonnam
-                                p.text-muted Physiotherapy & Pilates instructor
-                                p.text-muted “Trust yourself first — you can get better”
-                            h5 Educational Background
-                            ul
-                                li Bachelor of Science in Allied Health Sciences (Physical Therapy), Thammasat University ,graduated with First-Class Honors
-                            h5 Experience & Approach
-                            ul
-                                li Clinical internship experience across hospital and wellness settings
-                                li Provided physiotherapy care for football players, runners, and basketball athletes, including serving as a physiotherapist at the 75th Chulalongkorn–Thammasat Traditional Football Match
-                                li Skilled in analyzing posture, movement, and functional needs, and applying Pilates-based and physiotherapy principles to design personalized exercise programs that enhance strength, mobility, and overall movement efficiency
-                    .col-lg-3
-                        .team-member
-                            .member-top
-                                img.mx-auto.rounded-circle(src='/assets/img/team/tangmo.jpg', alt='Tangmo, Physiotherapy & Pilates instructor at Revive Pilates Bangkok')
-                                h4 Tangmo
-                                p.text-muted Physiotherapy & Pilates instructor
-                                p.text-muted “Functional movement begins with informed instruction”
-                            h5 Educational Background
-                            ul
-                                li Bachelor of Science in Physical Therapy, Rangsit University, graduated with First-Class Honors
-                            h5 Experience & Approach
-                            ul
-                                li Over 7 years of professional experience at Samitivej Srinakarin Hospital in the Physical Therapy Department, specializing in post-operative rehabilitation and prenatal care
-                                li Possesses strong expertise in physical therapy and the ability to integrate clinical knowledge into comprehensive Pilates-based exercise programs
+                +teamFull(team)
 
         // Contact
         section#contact.page-section
@@ -282,7 +236,7 @@ html(lang=lang)
                 .map-container.mt-4
                     // embed via direct coordinates
                     iframe(src="https://maps.google.com/maps?q=13.7100002,100.510921&z=17&output=embed" allowfullscreen="" loading="lazy")
-                a.text-white.mt-2.d-inline-block(href="https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8", target="_blank") Open in Google Maps
+                a.text-white.mt-2.d-inline-block(href="https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8", target="_blank", data-gtag-event='directions_click', data-gtag-location='contact_section') Open in Google Maps
                 if contact
                     .row.mt-4
                         .col-lg-12.text-center
@@ -300,7 +254,7 @@ html(lang=lang)
                                         | Facebook
                             if contact.line
                                 p.mb-1
-                                    a.d-inline-flex.align-items-center.text-white(href=lineHref, target="_blank")
+                                    a.d-inline-flex.align-items-center.text-white(href=lineHref, target="_blank", data-gtag-event='contact_click', data-gtag-location='contact_section')
                                         i.fab.fa-line.me-2
                                         | #{contact.line}
                             if contact.instagram
@@ -317,7 +271,7 @@ html(lang=lang)
                         | Copyright &copy; Revive Pilates Bangkok 2026
                     .col-lg-6.text-lg-end
                         // line icon
-                        a.btn.btn-dark.btn-social.mx-2(href=lineHref, aria-label='Line', target='_blank')
+                        a.btn.btn-dark.btn-social.mx-2(href=lineHref, aria-label='Line', target='_blank', data-gtag-event='contact_click', data-gtag-location='footer')
                             i.fab.fa-line
                         // facebook icon
                         a.btn.btn-dark.btn-social.mx-2(href=contact.facebook, aria-label='Facebook', target='_blank')

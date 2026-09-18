@@ -1,0 +1,24 @@
+//
+// Team rendering mixin — single source of truth for `data.team` (see
+// src/data/en.json / th.json), so index.pug and trial.pug never hardcode
+// the same bios twice and drift out of sync.
+//
+
+mixin teamFull(members)
+    .row
+        each member in members
+            .col-lg-3
+                .team-member
+                    .member-top
+                        img.mx-auto.rounded-circle(src=`/assets/img/team/${member.photo}`, alt=`${member.name}, ${member.role} at Revive Pilates Bangkok`)
+                        h4= member.name
+                        p.text-muted= member.role
+                        p.text-muted “#{member.quote}”
+                    h5 Educational Background
+                    ul
+                        each line in member.education
+                            li= line
+                    h5 Experience & Approach
+                    ul
+                        each line in member.experience
+                            li= line

@@ -19,6 +19,14 @@
         margin-top: 1.5rem;
         margin-bottom: 0;
     }
+
+    // Bullet lists read poorly centered (bullets drift under wrapped
+    // lines), so the bio text left-aligns while the photo/name/quote above
+    // stay centered.
+    h5,
+    ul {
+        text-align: left;
+    }
 }
 
 @include media-breakpoint-up(md) {

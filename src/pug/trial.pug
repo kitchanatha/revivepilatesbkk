@@ -1,3 +1,5 @@
+include mixins/team.pug
+
 doctype html
 html(lang=lang)
 
@@ -69,6 +71,21 @@ html(lang=lang)
         // multiple pages describing one LocalBusiness.
         script(type='application/ld+json')!= JSON.stringify(schema)
 
+        // Google Search Console ownership verification. No-op until
+        // src/data/site.json has a gscVerification value.
+        if site.gscVerification
+            meta(name='google-site-verification', content=site.gscVerification)
+
+        // Google Analytics 4. No-op until src/data/site.json has a
+        // gaMeasurementId value — safe to ship as-is before that exists.
+        if site.gaMeasurementId
+            script(async, src=`https://www.googletagmanager.com/gtag/js?id=${site.gaMeasurementId}`)
+            script.
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '#{site.gaMeasurementId}');
+
         // Favicon
         link(rel='icon', type='image/x-icon', href='/assets/favicon.ico')
 
@@ -113,11 +130,11 @@ html(lang=lang)
                                     role='button'
                                 ) TH
                         li.nav-item.ms-lg-2.mt-2.mt-lg-0
-                            a.btn.btn-sm.btn-outline-light(href=telHref, aria-label=`Call ${contact.phone}`)
+                            a.btn.btn-sm.btn-outline-light(href=telHref, aria-label=`Call ${contact.phone}`, data-gtag-event='call_click', data-gtag-location='trial_nav')
                                 i.fas.fa-phone.me-1
                                 span.d-lg-none= contact.phone
                         li.nav-item.ms-lg-2.mt-2.mt-lg-0
-                            a.btn.btn-sm.btn-success(href=lineHref, target='_blank', aria-label='Chat with Revive Pilates Bangkok on LINE')
+                            a.btn.btn-sm.btn-success(href=lineHref, target='_blank', aria-label='Chat with Revive Pilates Bangkok on LINE', data-gtag-event='contact_click', data-gtag-location='trial_nav')
                                 i.fab.fa-line.me-1
                                 | LINE
 
@@ -129,8 +146,8 @@ html(lang=lang)
                     h1.trial-heading= landing.hero.h1
                     p.trial-subheading= landing.hero.sub
                     .mt-4
-                        a.btn.btn-primary.btn-xl.text-uppercase.me-2.mb-2(href=lineHref, target='_blank')= landing.hero.ctaPrimary
-                        a.btn.btn-outline-light.btn-xl.text-uppercase.mb-2(href=telHref)= landing.hero.ctaSecondary
+                        a.btn.btn-primary.btn-xl.text-uppercase.me-2.mb-2(href=lineHref, target='_blank', data-gtag-event='contact_click', data-gtag-location='trial_hero')= landing.hero.ctaPrimary
+                        a.btn.btn-outline-light.btn-xl.text-uppercase.mb-2(href=telHref, data-gtag-event='call_click', data-gtag-location='trial_hero')= landing.hero.ctaSecondary
 
         // Benefits
         section#benefits.page-section
@@ -145,6 +162,37 @@ html(lang=lang)
                                 i.fas.fa-stack-1x.fa-inverse(class=`fa-${benefit.icon}`)
                             h4.my-3= benefit.title
                             p.text-muted= benefit.desc
+
+        // Services — same list as the homepage, so trial visitors can see
+        // the full range of what Revive treats, not just the trial pitch.
+        section#services.page-section.bg-light
+            .container
+                .text-center
+                    h2.section-heading.text-uppercase Services
+                .row.text-center
+                    each service in services
+                        .col-md-3
+                            span.fa-stack.fa-4x
+                                i.fas.fa-circle.fa-stack-2x.text-primary
+                                i.fas.fa-star.fa-stack-1x.fa-inverse
+                            h4.my-3= service.title
+                            p.text-muted= service.desc
+
+        // Galleries — same studio photos as the homepage, so trial
+        // visitors can see the actual space before booking.
+        section#portfolio.page-section
+            .container
+                .text-center
+                    h2.section-heading.text-uppercase Galleries
+                .row
+                    each photo, i in portfolio
+                        .col-lg-4.col-sm-6.mb-4
+                            .portfolio-item
+                                a.portfolio-link(href=`/assets/img/portfolio/${photo.file}`, target='_blank', title='Open full image in new tab')
+                                    .portfolio-hover
+                                        .portfolio-hover-content
+                                            | Click or hover to enlarge
+                                    img.img-fluid(src=`/assets/img/portfolio/${photo.file}`, alt=photo.alt)
 
         // How it works
         section#how-it-works.page-section.bg-light
@@ -166,16 +214,25 @@ html(lang=lang)
                     h3.text-uppercase= landing.offer.title
                     p.trial-offer-desc= landing.offer.desc
                     p.trial-offer-note= landing.offer.note
-                    a.btn.btn-primary.btn-xl.text-uppercase(href=lineHref, target='_blank')= landing.offer.cta
+                    a.btn.btn-primary.btn-xl.text-uppercase(href=lineHref, target='_blank', data-gtag-event='contact_click', data-gtag-location='trial_offer')= landing.offer.cta
 
-        // Credibility strip
+        // Credibility strip — no photo here: the Team section right below
+        // already shows every instructor by name, so a single generic
+        // headshot here just duplicated whoever's photo was first in Team.
         section#credibility.page-section.bg-light
             .container.text-center
-                img.trial-credibility-photo.rounded-circle.mb-4(src='/assets/img/team/bute.jpg', alt='One of the licensed physical therapists at Revive Pilates Bangkok')
                 p.lead= landing.credibility.text
 
+        // Team — same bios as the homepage, so trial visitors can see who
+        // they'd actually be training with before they book.
+        section#team.page-section
+            .container
+                .text-center
+                    h2.section-heading.text-uppercase Our Amazing Team
+                +teamFull(team)
+
         // Location
-        section#location.page-section
+        section#location.page-section.bg-light
             .container
                 .text-center
                     h2.section-heading.text-uppercase= landing.location.heading
@@ -183,12 +240,12 @@ html(lang=lang)
                 .map-container.mt-4
                     iframe(src="https://maps.google.com/maps?q=13.7100002,100.510921&z=17&output=embed" allowfullscreen="" loading="lazy")
                 .text-center.mt-3
-                    a.btn.btn-outline-primary(href="https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8", target="_blank") Open in Google Maps
+                    a.btn.btn-outline-primary(href="https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8", target="_blank", data-gtag-event='directions_click', data-gtag-location='trial_location') Open in Google Maps
                     if contact.address
                         p.mt-3= contact.address
 
         // FAQ
-        section#faq.page-section.bg-light
+        section#faq.page-section
             .container
                 .text-center
                     h2.section-heading.text-uppercase Frequently Asked Questions
@@ -202,7 +259,7 @@ html(lang=lang)
         section.trial-cta-band
             .container.text-center
                 h3.trial-cta-heading= landing.ctaBand.heading
-                a.btn.btn-primary.btn-xl.text-uppercase.mt-3(href=lineHref, target='_blank')= landing.ctaBand.cta
+                a.btn.btn-primary.btn-xl.text-uppercase.mt-3(href=lineHref, target='_blank', data-gtag-event='contact_click', data-gtag-location='trial_cta_band')= landing.ctaBand.cta
 
         // Footer
         footer.footer.py-4
@@ -211,7 +268,7 @@ html(lang=lang)
                     .col-lg-6.text-lg-start
                         | Copyright &copy; Revive Pilates Bangkok 2026
                     .col-lg-6.text-lg-end
-                        a.btn.btn-dark.btn-social.mx-2(href=lineHref, aria-label='Line', target='_blank')
+                        a.btn.btn-dark.btn-social.mx-2(href=lineHref, aria-label='Line', target='_blank', data-gtag-event='contact_click', data-gtag-location='trial_footer')
                             i.fab.fa-line
                         a.btn.btn-dark.btn-social.mx-2(href=contact.facebook, aria-label='Facebook', target='_blank')
                             i.fab.fa-facebook-f

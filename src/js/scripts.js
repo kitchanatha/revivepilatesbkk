@@ -46,4 +46,20 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // GA4 event tracking for conversion actions (calls, LINE chats, CTAs).
+    // Reads the event name + location off data-gtag-* attributes so pug
+    // templates stay declarative and this stays a single generic handler.
+    // No-ops safely if gtag isn't loaded (GA4 not yet configured, or an
+    // ad-blocker dropped it).
+    document.querySelectorAll('[data-gtag-event]').forEach(el => {
+        el.addEventListener('click', () => {
+            if (typeof gtag !== 'function') {
+                return;
+            }
+            gtag('event', el.dataset.gtagEvent, {
+                cta_location: el.dataset.gtagLocation || 'unknown'
+            });
+        });
+    });
+
 });

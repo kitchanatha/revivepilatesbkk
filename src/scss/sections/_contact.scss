@@ -2,27 +2,28 @@
 // Contact section styling
 //
 
+// responsive map embed wrapper — not scoped to #contact since the /trial
+// landing page's #location section reuses the same iframe embed.
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; // 16:9
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}
+
 section#contact {
     background-color: $gray-900;
     background-image: url("../assets/img/map-image.png");
     background-repeat: no-repeat;
     background-position: center;
-
-    // responsive map embed wrapper
-    .map-container {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 56.25%; // 16:9
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    }
 
     // make all text in this dark section light
     color: $white;

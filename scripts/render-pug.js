@@ -6,6 +6,11 @@ const sh = require('shelljs');
 const prettier = require('prettier');
 const { loadLang } = require('./i18n');
 
+// Site-wide, non-language-specific config (analytics IDs, etc.) — same
+// values regardless of route/lang, so it's loaded once here rather than
+// duplicated into en.json/th.json.
+const site = JSON.parse(fs.readFileSync(upath.resolve(upath.dirname(__filename), '../src/data/site.json')));
+
 /**
  * Render a pug page for a specific language + route.
  *
@@ -32,7 +37,7 @@ module.exports = function renderPug(filePath, options = {}) {
     };
     try {
         const data = loadLang(lang);
-        pugData = Object.assign(pugData, { lang, routePath }, data);
+        pugData = Object.assign(pugData, { lang, routePath, site }, data);
     } catch (e) {
         console.warn('warning: failed to load language data for', lang, e.message);
     }
