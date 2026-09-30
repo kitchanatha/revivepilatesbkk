@@ -107,7 +107,8 @@ html(lang=lang)
         // language switch, and the two conversion actions (call / LINE).
         nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
             .container
-                a.navbar-brand(href=homeHref) Revive Pilates Bangkok
+                a.navbar-brand.trial-nav-brand(href=homeHref)
+                    img(src='/assets/img/logo-nav.jpg', alt='Revive Pilates Bangkok')
                 button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
                     | Menu
                     i.fas.fa-bars.ms-1
@@ -174,7 +175,7 @@ html(lang=lang)
                         .col-md-3
                             span.fa-stack.fa-4x
                                 i.fas.fa-circle.fa-stack-2x.text-primary
-                                i.fas.fa-star.fa-stack-1x.fa-inverse
+                                i.fa-stack-1x.fa-inverse(class=`fas fa-${service.icon}`)
                             h4.my-3= service.title
                             p.text-muted= service.desc
 

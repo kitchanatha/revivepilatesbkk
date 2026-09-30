@@ -163,7 +163,7 @@ html(lang=lang)
                         .col-md-4
                             span.fa-stack.fa-4x
                                 i.fas.fa-circle.fa-stack-2x.text-primary
-                                i.fas.fa-star.fa-stack-1x.fa-inverse
+                                i.fa-stack-1x.fa-inverse(class=`fas fa-${service.icon}`)
                             h4.my-3= service.title
                             p.text-muted= service.desc
 

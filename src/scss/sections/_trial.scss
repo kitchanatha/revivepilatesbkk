@@ -7,9 +7,49 @@
 // callout and FAQ layout not used anywhere else on the site.
 //
 
-// .trial-page itself carries no rules — this template reuses '.page-section'
-// (see _global.scss) for spacing so it stays consistent with the homepage
-// without duplicating the breakpoint rules.
+// Warm cream neutral (sampled from the real logo's own background, see
+// src/assets/img/logo.jpg) instead of Bootstrap's cool grey .bg-light,
+// so the page reads closer to the brand's own elegant, muted mood.
+// Scoped to .trial-page only — the homepage keeps its existing palette.
+.trial-page {
+    background-color: #faf8f4;
+
+    .bg-light {
+        background-color: #f3efe6 !important;
+    }
+}
+
+// Nav logo — the real brand mark (src/assets/img/logo.jpg) has its own
+// light background baked into the photo, so it sits on a small white
+// card rather than directly on the dark nav, where it would otherwise
+// show as a stray light rectangle.
+.trial-nav-brand {
+    padding: 0.35rem 0.6rem !important;
+    background-color: $white;
+    border-radius: 0.4rem;
+    line-height: 0;
+
+    img {
+        height: 1.75rem;
+        width: auto;
+        display: block;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .trial-nav-brand img {
+        height: 2.25rem;
+        transition: height 0.3s ease-in-out;
+    }
+
+    .navbar-shrink .trial-nav-brand img {
+        height: 1.75rem;
+    }
+}
+
+// .trial-page itself carries no other rules — this template reuses
+// '.page-section' (see _global.scss) for spacing so it stays consistent
+// with the homepage without duplicating the breakpoint rules.
 
 // Hero — uses a real studio photo (an existing portfolio image) instead of
 // the unused stock "header-bg.jpg" flat-lay, with a dark scrim so white
