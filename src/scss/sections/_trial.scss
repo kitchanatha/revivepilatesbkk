@@ -57,20 +57,21 @@ $trial-accent-dark: #a67f45;
     }
 }
 
-// Nav logo — the real brand mark (src/assets/img/logo.jpg) has its own
-// light background baked into the photo, so it sits on a small white
-// card rather than directly on the dark nav, where it would otherwise
-// show as a stray light rectangle.
+// Nav logo — src/assets/img/logo-nav.png has its background keyed out
+// (cropped + chroma-keyed from the master src/assets/img/logo.jpg) so
+// it sits directly on the nav with no card behind it. The dark wordmark
+// alone would vanish against the dark nav/scrim, so a soft white
+// drop-shadow acts as a glow: invisible once the logo is over light
+// content, legible once it's over something dark.
 .trial-nav-brand {
     padding: 0.35rem 0.6rem !important;
-    background-color: $white;
-    border-radius: 0.4rem;
     line-height: 0;
 
     img {
         height: 1.75rem;
         width: auto;
         display: block;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.85)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.55));
     }
 }
 
