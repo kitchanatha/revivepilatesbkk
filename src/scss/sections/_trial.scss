@@ -1,21 +1,59 @@
 //
 // Trial landing page ("/trial", "/trial/th") styling
 //
-// A dedicated conversion page for trial-booking / paid-ads traffic — kept
-// visually consistent with the main site's brand ($primary yellow, dark
-// text, Montserrat/Roboto Slab) but with its own hero, step list, offer
-// callout and FAQ layout not used anywhere else on the site.
+// A dedicated conversion page for trial-booking / paid-ads traffic —
+// same typography as the main site (Montserrat/Roboto Slab) and its own
+// hero, step list, offer callout and FAQ layout, but its own accent
+// colors (below) sampled from real studio photos instead of the site's
+// $primary yellow, per client feedback to match the actual space.
 //
 
-// Warm cream neutral (sampled from the real logo's own background, see
-// src/assets/img/logo.jpg) instead of Bootstrap's cool grey .bg-light,
-// so the page reads closer to the brand's own elegant, muted mood.
-// Scoped to .trial-page only — the homepage keeps its existing palette.
+// Palette sampled directly from real studio photos (src/assets/img/
+// portfolio/P1034054.jpg and src/assets/img/team/bute.jpg): the warm
+// greige plaster wall behind the "Revive" sign, and the honey-toned
+// birch wood of the actual reformer/chair equipment — instead of
+// Bootstrap's cool grey .bg-light and the site-wide bright yellow
+// $primary, so the trial page reads like the real room, not a generic
+// template. Scoped to .trial-page only — homepage keeps its palette.
+$trial-accent: #c19a5b;
+$trial-accent-dark: #a67f45;
+
 .trial-page {
-    background-color: #faf8f4;
+    background-color: #f5f1ea;
 
     .bg-light {
-        background-color: #f3efe6 !important;
+        background-color: #e9e1d2 !important;
+    }
+
+    .btn-primary {
+        background-color: $trial-accent;
+        border-color: $trial-accent;
+        color: $gray-900;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $trial-accent-dark;
+            border-color: $trial-accent-dark;
+            color: $gray-900;
+        }
+    }
+
+    .btn-outline-primary {
+        color: $trial-accent-dark;
+        border-color: $trial-accent;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $trial-accent;
+            border-color: $trial-accent;
+            color: $gray-900;
+        }
+    }
+
+    .text-primary {
+        color: $trial-accent !important;
     }
 }
 
@@ -76,7 +114,7 @@ header.trial-hero {
         letter-spacing: $headings-letter-spacing;
         font-family: $headings-font-family;
         font-weight: $headings-font-weight;
-        color: $primary;
+        color: $trial-accent;
         font-size: 0.95rem;
         margin-bottom: 1rem;
     }
@@ -114,7 +152,7 @@ header.trial-hero {
         width: 3.5rem;
         height: 3.5rem;
         border-radius: 100%;
-        background-color: $primary;
+        background-color: $trial-accent;
         color: $gray-900;
         font-family: $headings-font-family;
         font-weight: $headings-font-weight;
@@ -128,7 +166,7 @@ header.trial-hero {
     text-align: center;
     padding: 3rem 2rem;
     background-color: $white;
-    border: 2px solid $primary;
+    border: 2px solid $trial-accent;
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
 
@@ -176,7 +214,7 @@ header.trial-hero {
 // Repeated CTA band, just above the footer
 .trial-cta-band {
     padding: 5rem 0;
-    background-color: $primary;
+    background-color: $trial-accent;
     text-align: center;
 
     .trial-cta-heading {
