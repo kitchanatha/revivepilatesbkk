@@ -7,6 +7,7 @@ const renderPug = require('./render-pug');
 const srcPath = upath.resolve(upath.dirname(__filename), '../src');
 const distPath = upath.resolve(upath.dirname(__filename), '../dist');
 const indexPug = upath.join(srcPath, 'pug/index.pug');
+const linksPug = upath.join(srcPath, 'pug/links.pug');
 
 // index.pug is what used to be the /trial ads-landing page — the team
 // decided to make that design the homepage. This site serves it at three
@@ -27,6 +28,10 @@ const targets = [
 targets.forEach(({ lang, routePath, destPath }) => {
     renderPug(indexPug, { lang, routePath, destPath });
 });
+
+// Link-in-bio hub for Instagram/Facebook profile links — one language-
+// neutral page, not part of the sitemap (see build-seo-files.js).
+renderPug(linksPug, { lang: 'en', routePath: '/links', destPath: 'dist/links/index.html' });
 
 // The old /trial, /trial/th URLs (ad creatives, shared links, bookmarks)
 // still point here — redirect them to the equivalent new homepage route

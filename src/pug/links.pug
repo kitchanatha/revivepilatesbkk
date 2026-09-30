@@ -1,0 +1,61 @@
+doctype html
+html(lang=lang)
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name='robots', content='noindex')
+
+        -
+            const siteUrl = 'https://revivepilatesbkk.com'
+            const canonicalUrl = siteUrl + '/links'
+            const lineId = contact.line.startsWith('@') ? contact.line.slice(1) : contact.line
+            const instaId = contact.instagram.startsWith('@') ? contact.instagram.slice(1) : contact.instagram
+            const lineHref = `https://line.me/R/ti/p/%40${lineId}`
+            const instaHref = `https://www.instagram.com/${instaId}`
+
+        title Revive Pilates Bangkok — Links
+        link(rel='canonical', href=canonicalUrl)
+        link(rel='icon', type='image/x-icon', href='/assets/favicon.ico')
+
+        // Font Awesome icons (free version) — deferred, not needed for first paint
+        script(src='https://use.fontawesome.com/releases/v6.3.0/js/all.js', crossorigin='anonymous', defer)
+
+        // Google fonts
+        link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+
+        // Core theme CSS (includes Bootstrap)
+        link(href='/css/styles.css', rel='stylesheet')
+
+        // Google tag (gtag.js) — inert until site.gaMeasurementId is set
+        if site.gaMeasurementId
+            script(async, src=`https://www.googletagmanager.com/gtag/js?id=${site.gaMeasurementId}`)
+            script.
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '#{site.gaMeasurementId}');
+
+    body.links-page
+        .links-card
+            img.links-logo(src='/assets/img/logo-nav.png', alt='Revive Pilates Bangkok')
+            p.links-tagline Reformer Pilates &amp; Physiotherapy — Charoen Krung, Bangkok
+
+            a.links-btn(href=canonicalUrl.replace('/links', ''), target='_blank', rel='noopener', data-gtag-event='link_click', data-gtag-location='website')
+                i.fas.fa-globe.me-2
+                | Website
+
+            a.links-btn(href=instaHref, target='_blank', rel='noopener', data-gtag-event='link_click', data-gtag-location='instagram')
+                i.fab.fa-instagram.me-2
+                | Instagram
+
+            a.links-btn(href=contact.facebook, target='_blank', rel='noopener', data-gtag-event='link_click', data-gtag-location='facebook')
+                i.fab.fa-facebook-f.me-2
+                | Facebook
+
+            a.links-btn(href=lineHref, target='_blank', rel='noopener', data-gtag-event='link_click', data-gtag-location='line')
+                i.fab.fa-line.me-2
+                | LINE
+
+            p.links-footer © Revive Pilates Bangkok
+
+        script(src='/js/scripts.js', defer)
