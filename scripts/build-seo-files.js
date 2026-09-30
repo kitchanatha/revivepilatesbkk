@@ -20,29 +20,17 @@ fs.writeFileSync(upath.join(distPath, 'robots.txt'), robotsTxt);
 console.log('### INFO: wrote dist/robots.txt');
 
 // sitemap.xml — one entry per real route, with hreflang alternates so
-// each language variant is declared consistently with the <link> tags
-// in each page's <head> (see src/pug/index.pug and src/pug/trial.pug).
-//
-// Grouped by page/template, since each group's alternates point at its own
-// language routes, not a site-wide pair — the homepage's /en+/th alternates
-// would be wrong if reused on the /trial pages, and vice versa.
+// each language variant is declared consistently with the <link> tags in
+// src/pug/index.pug. The old /trial, /trial/th routes now just redirect
+// (see build-pug.js) and are intentionally left out — a sitemap should
+// only list canonical, indexable pages, not redirects.
 const routeGroups = [
     {
-        // Homepage (src/pug/index.pug)
         routes: ['/', '/en', '/th'],
         alternates: [
             { hreflang: 'en', href: `${siteUrl}/en` },
             { hreflang: 'th', href: `${siteUrl}/th` },
             { hreflang: 'x-default', href: `${siteUrl}/en` }
-        ]
-    },
-    {
-        // Trial-booking / ads landing page (src/pug/trial.pug)
-        routes: ['/trial', '/trial/th'],
-        alternates: [
-            { hreflang: 'en', href: `${siteUrl}/trial` },
-            { hreflang: 'th', href: `${siteUrl}/trial/th` },
-            { hreflang: 'x-default', href: `${siteUrl}/trial` }
         ]
     }
 ];

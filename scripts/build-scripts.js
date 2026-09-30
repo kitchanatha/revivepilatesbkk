@@ -6,7 +6,7 @@
 // so on every build it silently overwrote build-pug.js's correct output
 // with a version missing routePath — breaking the canonical/hreflang tags
 // build-pug.js (see its comment) was specifically reworked to fix. Removed;
-// build-pug.js is now the only thing that renders index.pug/trial.pug.
+// build-pug.js is now the only thing that renders index.pug.
 const renderScripts = require('./render-scripts');
 
 renderScripts();

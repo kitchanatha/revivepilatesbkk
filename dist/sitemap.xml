@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://revivepilatesbkk.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://revivepilatesbkk.com/en" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://revivepilatesbkk.com/th" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://revivepilatesbkk.com/en" />
+  </url>
+  <url>
+    <loc>https://revivepilatesbkk.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://revivepilatesbkk.com/en" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://revivepilatesbkk.com/th" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://revivepilatesbkk.com/en" />
+  </url>
+  <url>
+    <loc>https://revivepilatesbkk.com/th</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://revivepilatesbkk.com/en" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://revivepilatesbkk.com/th" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://revivepilatesbkk.com/en" />
+  </url>
+</urlset>

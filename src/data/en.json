@@ -1,17 +1,4 @@
 {
-  "meta": {
-    "title": "Reformer Pilates Studio in Charoen Krung, Bangkok | Revive Pilates",
-    "description": "Private reformer Pilates studio at Cove Hill, Charoen Krung. Every instructor is a licensed physical therapist. Rehab, prenatal, sports & beginner sessions.",
-    "ogLocale": "en_US"
-  },
-
-  "hero": {
-    "h1": "Reformer Pilates & Physiotherapy in Charoen Krung, Bangkok",
-    "sub": "Personalized Pilates led by instructors with physical-therapy backgrounds, for strength, posture, mobility and confident movement.",
-    "ctaPrimary": "Book / Chat on LINE",
-    "ctaSecondary": "Get Directions"
-  },
-
   "services":[
     {
       "title":"Pilates for Rehabilitation",
@@ -35,21 +22,6 @@
     }
   ],
 
-  "packages":[
-    {
-      "title":"Trial Session",
-      "desc":"Experience Pilates one-on-one at a special rate while assessing posture and personal goals."
-    },
-    {
-      "title":"Private Package",
-      "desc":"Personalized training designed specifically for your body and goals."
-    },
-    {
-      "title":"Family Package",
-      "desc":"Train with friends or loved ones with customized programs for each participant."
-    }
-  ],
-
   "portfolio": [
     { "file": "P1033932.jpg", "alt": "Instructor guiding a client through a leg-extension exercise on a Pilates wunda chair at Revive Pilates Bangkok" },
     { "file": "P1033972.jpg", "alt": "Client balancing in an inverted stretch on a Pilates ladder barrel, assisted by an instructor" },
@@ -58,11 +30,6 @@
     { "file": "P1034155.jpg", "alt": "Instructor guiding a client through a rotation exercise with a small ball on the Pilates chair" },
     { "file": "P1034196.jpg", "alt": "Instructor assisting a client's side-stretch position on the Pilates ladder barrel" }
   ],
-
-  "about":{
-    "vision":"Revive Your Body • Refresh Your Mind • Rediscover Your Strength",
-    "desc":"We are a private Pilates studio with five dedicated rooms designed for focused, safe, and comfortable training. All instructors are licensed Physical Therapists who provide personalized programs based on posture analysis, movement assessment, and rehabilitation principles."
-  },
 
   "contact":{
     "address":"2nd Floor, Cove Hill Project, 1888 Charoen Krung Road, Bangkok 10120",
@@ -132,8 +99,8 @@
 
   "landing": {
     "meta": {
-      "title": "Book a Trial Reformer Pilates Session in Charoen Krung, Bangkok | Revive Pilates",
-      "description": "Try a private, one-on-one reformer Pilates session led by a licensed physical therapist. Book your trial at Revive Pilates, Cove Hill, Charoen Krung, Bangkok.",
+      "title": "Reformer Pilates Studio in Charoen Krung, Bangkok | Revive Pilates",
+      "description": "Private reformer Pilates studio at Cove Hill, Charoen Krung. Every instructor is a licensed physical therapist. Rehab, prenatal, sports & beginner sessions.",
       "ogLocale": "en_US"
     },
 

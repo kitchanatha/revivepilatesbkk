@@ -1,7 +1,7 @@
 /*!
-* Start Bootstrap - Agency v7.0.12 (https://startbootstrap.com/theme/agency)
-* Copyright 2013-2026 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
+* Start Bootstrap - Revive Pilates Bangkok v1.0.0 (https://revivepilatesbkk.com)
+* Copyright 2013-2026 undefined
+* Licensed under MIT (https://github.com/StartBootstrap/revivepilatesbkk/blob/master/LICENSE)
 */
 //
 // Scripts
@@ -48,6 +48,22 @@ window.addEventListener('DOMContentLoaded', event => {
             if (window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
             }
+        });
+    });
+
+    // GA4 event tracking for conversion actions (calls, LINE chats, CTAs).
+    // Reads the event name + location off data-gtag-* attributes so pug
+    // templates stay declarative and this stays a single generic handler.
+    // No-ops safely if gtag isn't loaded (GA4 not yet configured, or an
+    // ad-blocker dropped it).
+    document.querySelectorAll('[data-gtag-event]').forEach(el => {
+        el.addEventListener('click', () => {
+            if (typeof gtag !== 'function') {
+                return;
+            }
+            gtag('event', el.dataset.gtagEvent, {
+                cta_location: el.dataset.gtagLocation || 'unknown'
+            });
         });
     });
 

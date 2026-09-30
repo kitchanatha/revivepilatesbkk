@@ -1,11 +1,53 @@
+<!---->
+<!-- Team rendering mixin — single source of truth for `data.team` (see-->
+<!-- src/data/en.json / th.json), so index.pug and trial.pug never hardcode-->
+<!-- the same bios twice and drift out of sync.-->
+<!---->
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Revive Pilates Bangkok Homepage</title>
+        <meta name="description" content="Private reformer Pilates studio at Cove Hill, Charoen Krung. Every instructor is a licensed physical therapist. Rehab, prenatal, sports &amp; beginner sessions." />
+        <title>Reformer Pilates Studio in Charoen Krung, Bangkok | Revive Pilates</title>
+        <!-- Canonical + language alternates — this landing page is a separate-->
+        <!-- conversion destination from the homepage, so it gets its own-->
+        <!-- canonical/hreflang pair rather than pointing back at '/en'/'/th'.-->
+        <link rel="canonical" href="https://revivepilatesbkk.com/en" />
+        <link rel="alternate" hreflang="en" href="https://revivepilatesbkk.com/en" />
+        <link rel="alternate" hreflang="th" href="https://revivepilatesbkk.com/th" />
+        <link rel="alternate" hreflang="x-default" href="https://revivepilatesbkk.com/en" />
+        <!-- Open Graph / social sharing-->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Revive Pilates Bangkok" />
+        <meta property="og:title" content="Reformer Pilates Studio in Charoen Krung, Bangkok | Revive Pilates" />
+        <meta property="og:description" content="Private reformer Pilates studio at Cove Hill, Charoen Krung. Every instructor is a licensed physical therapist. Rehab, prenatal, sports &amp; beginner sessions." />
+        <meta property="og:url" content="https://revivepilatesbkk.com/en" />
+        <meta property="og:image" content="https://revivepilatesbkk.com/assets/img/portfolio/P1034054.jpg" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Reformer Pilates Studio in Charoen Krung, Bangkok | Revive Pilates" />
+        <meta name="twitter:description" content="Private reformer Pilates studio at Cove Hill, Charoen Krung. Every instructor is a licensed physical therapist. Rehab, prenatal, sports &amp; beginner sessions." />
+        <meta name="twitter:image" content="https://revivepilatesbkk.com/assets/img/portfolio/P1034054.jpg" />
+        <!-- LocalBusiness structured data — same business entity as the homepage,-->
+        <!-- scoped to this page's own URL/description per Google's guidance for-->
+        <!-- multiple pages describing one LocalBusiness.-->
+        <script type="application/ld+json">
+            { "@context": "https://schema.org", "@type": "HealthAndBeautyBusiness", "name": "Revive Pilates Bangkok", "url": "https://revivepilatesbkk.com/en", "image": "https://revivepilatesbkk.com/assets/img/portfolio/P1034054.jpg", "telephone": "+66-82-451-5155", "email": "revivepilatesbkk@gmail.com", "address": { "@type": "PostalAddress", "streetAddress": "2nd Floor, Cove Hill Project, 1888 Charoen Krung Road", "addressLocality": "Bangkok", "postalCode": "10120", "addressCountry": "TH" }, "geo": { "@type": "GeoCoordinates", "latitude": 13.7100002, "longitude": 100.510921 }, "sameAs": ["https://web.facebook.com/people/Revive-Pilates-Studio-Wellness/61584033732719/?_rdc=1&_rdr#", "https://www.instagram.com/revivepilatesbkk", "https://line.me/R/ti/p/%40revivepilates"], "description": "Private reformer Pilates studio at Cove Hill, Charoen Krung. Every instructor is a licensed physical therapist. Rehab, prenatal, sports & beginner sessions." }
+        </script>
+        <!-- Google Search Console ownership verification. No-op until-->
+        <!-- src/data/site.json has a gscVerification value.-->
+        <!-- Google Analytics 4. No-op until src/data/site.json has a-->
+        <!-- gaMeasurementId value — safe to ship as-is before that exists.-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q450SKV2K8"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-Q450SKV2K8');
+        </script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -16,11 +58,13 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
     </head>
-    <body id="page-top">
-        <!-- Navigation-->
+    <body class="trial-page" id="page-top">
+        <!-- Full nav — this template became the homepage (previously the-->
+        <!-- /trial ads-landing page; see build-pug.js), so every section on-->
+        <!-- the page gets a jump link instead of the trimmed ads-only menu.-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">Revive Pilates Bangkok</a>
+                <a class="navbar-brand trial-nav-brand" href="#page-top"><img src="/assets/img/logo-nav.png" alt="Revive Pilates Bangkok" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -29,193 +73,230 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Galleries</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item ms-3">
+                        <li class="nav-item"><a class="nav-link" href="#location">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
                             <div class="btn-group" role="group">
                                 <a class="btn btn-sm btn-primary" href="/en" role="button">EN</a>
                                 <a class="btn btn-sm btn-outline-primary" href="/th" role="button">TH</a>
                             </div>
                         </li>
+                        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                            <a class="btn btn-sm btn-outline-light" href="tel:+66824515155" aria-label="Call +66-82-451-5155" data-gtag-event="call_click" data-gtag-location="nav">
+                                <i class="fas fa-phone me-1"></i>
+                                <span class="d-lg-none">+66-82-451-5155</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                            <a class="btn btn-sm btn-success" href="https://line.me/R/ti/p/%40revivepilates" target="_blank" aria-label="Chat with Revive Pilates Bangkok on LINE" data-gtag-event="contact_click" data-gtag-location="nav">
+                                <i class="fab fa-line me-1"></i>
+                                LINE
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
-        <header class="masthead">
+        <!-- Hero-->
+        <header class="trial-hero">
             <div class="container">
-                <div class="masthead-subheading">Welcome To Revive Pilates Bangkok!</div>
-                <div class="masthead-heading text-uppercase">We're open now</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+                <div class="trial-hero-inner">
+                    <p class="trial-eyebrow">New to Revive?</p>
+                    <h1 class="trial-heading">Try Your First Reformer Pilates Session, One-on-One With a Physical Therapist</h1>
+                    <p class="trial-subheading">A private trial session at Cove Hill, Charoen Krung — posture assessment, personalized guidance, and a real feel for how Revive trains.</p>
+                    <div class="mt-4">
+                        <a class="btn btn-primary btn-xl text-uppercase me-2 mb-2" href="https://line.me/R/ti/p/%40revivepilates" target="_blank" data-gtag-event="contact_click" data-gtag-location="hero">Book Now</a>
+                        <a class="btn btn-outline-light btn-xl text-uppercase mb-2" href="tel:+66824515155" data-gtag-event="call_click" data-gtag-location="hero">Call Us</a>
+                    </div>
+                </div>
             </div>
         </header>
-        <!-- Services-->
-        <section class="page-section" id="services">
+        <!-- Benefits-->
+        <section class="page-section" id="benefits">
             <div class="container">
-                <div class="text-center"><h2 class="section-heading text-uppercase">Services</h2></div>
+                <div class="text-center"><h2 class="section-heading text-uppercase">Why Try Revive</h2></div>
                 <div class="row text-center">
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-star fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-stack-1x fa-inverse fa-user-md"></i>
+                        </span>
+                        <h4 class="my-3">Every Instructor Is a Licensed PT</h4>
+                        <p class="text-muted">Sessions are led by physical therapists, not just certified instructors — trained to read posture and movement, not only count reps.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-stack-1x fa-inverse fa-door-closed"></i>
+                        </span>
+                        <h4 class="my-3">Fully Private Studio</h4>
+                        <p class="text-muted">Five dedicated rooms, one-on-one — no shared reformer lines, no group pace to keep up with.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-stack-1x fa-inverse fa-clipboard-list"></i>
+                        </span>
+                        <h4 class="my-3">Built Around Your Goals</h4>
+                        <p class="text-muted">Whether it's rehab, prenatal/postnatal, sport performance, or general strength, your trial is shaped around what you actually need.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="page-section bg-light" id="services">
+            <div class="container">
+                <div class="text-center"><h2 class="section-heading text-uppercase">Services</h2></div>
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa-stack-1x fa-inverse fas fa-crutch"></i>
                         </span>
                         <h4 class="my-3">Pilates for Rehabilitation</h4>
                         <p class="text-muted">Designed for individuals with musculoskeletal conditions or postural imbalances such as neck pain, lower back pain, scoliosis, herniated discs, spinal stenosis, knee pain, and plantar fasciitis.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-star fa-stack-1x fa-inverse"></i>
+                            <i class="fa-stack-1x fa-inverse fas fa-baby"></i>
                         </span>
-                        <h4 class="my-3">Prenatal &amp; Postnatal</h4>
+                        <h4 class="my-3">Pilates for Prenatal &amp; Postnatal Care</h4>
                         <p class="text-muted">Supports mothers during and after pregnancy by strengthening muscles, improving flexibility, and restoring pelvic floor and core stability.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-star fa-stack-1x fa-inverse"></i>
+                            <i class="fa-stack-1x fa-inverse fas fa-person-running"></i>
                         </span>
-                        <h4 class="my-3">Athletes</h4>
+                        <h4 class="my-3">Pilates for Athletes</h4>
                         <p class="text-muted">Enhances performance through targeted muscle activation and sport-specific functional training while supporting injury recovery.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-star fa-stack-1x fa-inverse"></i>
+                            <i class="fa-stack-1x fa-inverse fas fa-heart-pulse"></i>
                         </span>
-                        <h4 class="my-3">Elderly</h4>
+                        <h4 class="my-3">Pilates for Seniors</h4>
                         <p class="text-muted">Improves strength, flexibility, and balance for safer movement and a better quality of life.</p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Packages-->
-        <section class="page-section bg-light" id="packages">
-            <div class="container">
-                <div class="text-center"><h2 class="section-heading text-uppercase">Packages</h2></div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <h4 class="my-3">Trial Session</h4>
-                        <p class="text-muted">Experience Pilates one-on-one at a special rate while assessing posture and personal goals.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="my-3">Private Package</h4>
-                        <p class="text-muted">Personalized training designed specifically for your body and goals.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="my-3">Family Package</h4>
-                        <p class="text-muted">Train with friends or loved ones with customized programs for each participant.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Portfolio Grid-->
-        <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
+        <!-- Galleries-->
+        <section class="page-section" id="portfolio">
             <div class="container">
                 <div class="text-center"><h2 class="section-heading text-uppercase">Galleries</h2></div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" href="/assets/img/portfolio/P1033932.jpg" target="_blank" title="Open full image in new tab">
                                 <div class="portfolio-hover"><div class="portfolio-hover-content">Click or hover to enlarge</div></div>
-                                <img class="img-fluid" src="/assets/img/portfolio/P1033932.jpg" alt="..." />
+                                <img class="img-fluid" src="/assets/img/portfolio/P1033932.jpg" alt="Instructor guiding a client through a leg-extension exercise on a Pilates wunda chair at Revive Pilates Bangkok" />
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" href="/assets/img/portfolio/P1033972.jpg" target="_blank" title="Open full image in new tab">
                                 <div class="portfolio-hover"><div class="portfolio-hover-content">Click or hover to enlarge</div></div>
-                                <img class="img-fluid" src="/assets/img/portfolio/P1033972.jpg" alt="..." />
+                                <img class="img-fluid" src="/assets/img/portfolio/P1033972.jpg" alt="Client balancing in an inverted stretch on a Pilates ladder barrel, assisted by an instructor" />
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 3-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" href="/assets/img/portfolio/P1034054.jpg" target="_blank" title="Open full image in new tab">
                                 <div class="portfolio-hover"><div class="portfolio-hover-content">Click or hover to enlarge</div></div>
-                                <img class="img-fluid" src="/assets/img/portfolio/P1034054.jpg" alt="..." />
+                                <img class="img-fluid" src="/assets/img/portfolio/P1034054.jpg" alt="Instructor supporting a client's reaching-arm posture during a seated Pilates chair exercise" />
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 4-->
+                    <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" href="/assets/img/portfolio/P1034110.jpg" target="_blank" title="Open full image in new tab">
                                 <div class="portfolio-hover"><div class="portfolio-hover-content">Click or hover to enlarge</div></div>
-                                <img class="img-fluid" src="/assets/img/portfolio/P1034110.jpg" alt="..." />
+                                <img class="img-fluid" src="/assets/img/portfolio/P1034110.jpg" alt="Instructor assisting a client's extended-leg balance on a Pilates ladder barrel" />
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 5-->
+                    <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" href="/assets/img/portfolio/P1034155.jpg" target="_blank" title="Open full image in new tab">
                                 <div class="portfolio-hover"><div class="portfolio-hover-content">Click or hover to enlarge</div></div>
-                                <img class="img-fluid" src="/assets/img/portfolio/P1034155.jpg" alt="..." />
+                                <img class="img-fluid" src="/assets/img/portfolio/P1034155.jpg" alt="Instructor guiding a client through a rotation exercise with a small ball on the Pilates chair" />
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 6-->
+                    <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" href="/assets/img/portfolio/P1034196.jpg" target="_blank" title="Open full image in new tab">
                                 <div class="portfolio-hover"><div class="portfolio-hover-content">Click or hover to enlarge</div></div>
-                                <img class="img-fluid" src="/assets/img/portfolio/P1034196.jpg" alt="..." />
+                                <img class="img-fluid" src="/assets/img/portfolio/P1034196.jpg" alt="Instructor assisting a client's side-stretch position on the Pilates ladder barrel" />
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- About-->
-        <section class="page-section" id="about">
+        <!-- How it works-->
+        <section class="page-section bg-light" id="how-it-works">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">We are a private Pilates studio with five dedicated rooms designed for focused, safe, and comfortable training. All instructors are licensed Physical Therapists who provide personalized programs based on posture analysis, movement assessment, and rehabilitation principles.</h3>
-                    <p class="lead text-center">Revive Your Body • Refresh Your Mind • Rediscover Your Strength</p>
+                <div class="text-center"><h2 class="section-heading text-uppercase">How It Works</h2></div>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="trial-step">
+                            <div class="trial-step-num">1</div>
+                            <h4 class="my-3">Message Us on LINE</h4>
+                            <p class="text-muted">Tell us your goals and a time that works — we'll confirm your trial slot directly.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="trial-step">
+                            <div class="trial-step-num">2</div>
+                            <h4 class="my-3">Posture &amp; Goals Assessment</h4>
+                            <p class="text-muted">Your instructor starts by understanding your body, any aches or limitations, and what you want to work on.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="trial-step">
+                            <div class="trial-step-num">3</div>
+                            <h4 class="my-3">Your One-on-One Session</h4>
+                            <p class="text-muted">A personalized reformer session, fully guided — so you leave knowing exactly what Revive training feels like.</p>
+                        </div>
+                    </div>
                 </div>
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/assets/img/logo.jpg" alt="Revive Pilates Logo" /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>2026</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <h4>
-                                Be Part
-                                <br />
-                                Of Our
-                                <br />
-                                Story!
-                            </h4>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </section>
+        <!-- Trial offer callout-->
+        <section class="page-section" id="offer">
+            <div class="container">
+                <div class="trial-offer-box mx-auto">
+                    <h3 class="text-uppercase">Trial Session</h3>
+                    <p class="trial-offer-desc">Experience Pilates one-on-one at a special rate while assessing posture and personal goals.</p>
+                    <p class="trial-offer-note">Ask about current trial pricing when you message us on LINE.</p>
+                    <a class="btn btn-primary btn-xl text-uppercase" href="https://line.me/R/ti/p/%40revivepilates" target="_blank" data-gtag-event="contact_click" data-gtag-location="offer">Book Now</a>
+                </div>
+            </div>
+        </section>
+        <!-- Credibility strip — no photo here: the Team section right below-->
+        <!-- already shows every instructor by name, so a single generic-->
+        <!-- headshot here just duplicated whoever's photo was first in Team.-->
+        <section class="page-section bg-light" id="credibility">
+            <div class="container text-center"><p class="lead">All of our instructors are licensed Physical Therapists, and every program is built on posture analysis, movement assessment, and rehabilitation principles — for rehab, prenatal/postnatal, athletes, and beginners alike.</p></div>
+        </section>
         <!-- Team-->
-        <section class="page-section bg-light" id="team">
+        <section class="page-section" id="team">
             <div class="container">
                 <div class="text-center"><h2 class="section-heading text-uppercase">Our Amazing Team</h2></div>
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="team-member">
                             <div class="member-top">
-                                <img class="mx-auto rounded-circle" src="/assets/img/team/bute.jpg" alt="..." />
+                                <img class="mx-auto rounded-circle" src="/assets/img/team/bute.jpg" alt="Bute, Physiotherapy &amp; Pilates instructor at Revive Pilates Bangkok" />
                                 <h4>Bute</h4>
-                                <p class="text-muted">Physiotherapy & Pilates instructor</p>
+                                <p class="text-muted">Physiotherapy &amp; Pilates instructor</p>
                                 <p class="text-muted">“Small movements, big changes”</p>
                             </div>
                             <h5>Educational Background</h5>
@@ -227,17 +308,14 @@
                                 <li>Experience in physiotherapy internships in hospital settings, as well as providing physiotherapy treatment for football players and runners</li>
                                 <li>Skilled in conducting physiotherapy assessments, analyzing body alignment and movement patterns to treat and prevent injuries, using Pilates-based exercise as the primary approach</li>
                             </ul>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="team-member">
                             <div class="member-top">
-                                <img class="mx-auto rounded-circle" src="/assets/img/team/nam.jpg" alt="..." />
+                                <img class="mx-auto rounded-circle" src="/assets/img/team/nam.jpg" alt="Nam, Physiotherapy &amp; Pilates instructor at Revive Pilates Bangkok" />
                                 <h4>Nam</h4>
-                                <p class="text-muted">Physiotherapy & Pilates instructor</p>
+                                <p class="text-muted">Physiotherapy &amp; Pilates instructor</p>
                                 <p class="text-muted">“Every Move Builds Your Strength”</p>
                             </div>
                             <h5>Educational Background</h5>
@@ -250,17 +328,14 @@
                                 <li>Experience managing musculoskeletal pain, movement dysfunctions, athletes and runners for injury prevention and functional movement improvement</li>
                                 <li>Application of physiotherapy principles in Pilates to enhance safe movement, reduce pain, core strength, and improved posture</li>
                             </ul>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="team-member">
                             <div class="member-top">
-                                <img class="mx-auto rounded-circle" src="/assets/img/team/tonnam.jpg" alt="..." />
+                                <img class="mx-auto rounded-circle" src="/assets/img/team/tonnam.jpg" alt="Tonnam, Physiotherapy &amp; Pilates instructor at Revive Pilates Bangkok" />
                                 <h4>Tonnam</h4>
-                                <p class="text-muted">Physiotherapy & Pilates instructor</p>
+                                <p class="text-muted">Physiotherapy &amp; Pilates instructor</p>
                                 <p class="text-muted">“Trust yourself first — you can get better”</p>
                             </div>
                             <h5>Educational Background</h5>
@@ -273,17 +348,14 @@
                                 <li>Provided physiotherapy care for football players, runners, and basketball athletes, including serving as a physiotherapist at the 75th Chulalongkorn–Thammasat Traditional Football Match</li>
                                 <li>Skilled in analyzing posture, movement, and functional needs, and applying Pilates-based and physiotherapy principles to design personalized exercise programs that enhance strength, mobility, and overall movement efficiency</li>
                             </ul>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="team-member">
                             <div class="member-top">
-                                <img class="mx-auto rounded-circle" src="/assets/img/team/tangmo.jpg" alt="..." />
+                                <img class="mx-auto rounded-circle" src="/assets/img/team/tangmo.jpg" alt="Tangmo, Physiotherapy &amp; Pilates instructor at Revive Pilates Bangkok" />
                                 <h4>Tangmo</h4>
-                                <p class="text-muted">Physiotherapy & Pilates instructor</p>
+                                <p class="text-muted">Physiotherapy &amp; Pilates instructor</p>
                                 <p class="text-muted">“Functional movement begins with informed instruction”</p>
                             </div>
                             <h5>Educational Background</h5>
@@ -295,293 +367,72 @@
                                 <li>Over 7 years of professional experience at Samitivej Srinakarin Hospital in the Physical Therapy Department, specializing in post-operative rehabilitation and prenatal care</li>
                                 <li>Possesses strong expertise in physical therapy and the ability to integrate clinical knowledge into comprehensive Pilates-based exercise programs</li>
                             </ul>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Contact-->
-        <section class="page-section" id="contact">
+        <!-- Location-->
+        <section class="page-section bg-light" id="location">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Get in touch</h3>
+                    <h2 class="section-heading text-uppercase">Find Us at Cove Hill</h2>
+                    <h3 class="section-subheading text-muted">2nd floor, Charoen Krung — easy to reach, easy to find.</h3>
                 </div>
-                <!-- embedded google map-->
-                <div class="map-container mt-4">
-                    <!-- embed via direct coordinates-->
-                    <iframe src="https://maps.google.com/maps?q=13.7100002,100.510921&amp;z=17&amp;output=embed" allowfullscreen="" loading="lazy"></iframe>
+                <div class="map-container mt-4"><iframe src="https://maps.google.com/maps?q=13.7100002,100.510921&amp;z=17&amp;output=embed" allowfullscreen="" loading="lazy"></iframe></div>
+                <div class="text-center mt-3">
+                    <a class="btn btn-outline-primary" href="https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8" target="_blank" data-gtag-event="directions_click" data-gtag-location="location">Open in Google Maps</a>
+                    <p class="mt-3">2nd Floor, Cove Hill Project, 1888 Charoen Krung Road, Bangkok 10120</p>
                 </div>
-                <a class="text-white mt-2 d-inline-block" href="https://maps.app.goo.gl/5q3XJ1TuYEyQ6L9R8" target="_blank">Open in Google Maps</a>
-                <div class="row mt-4">
-                    <div class="col-lg-12 text-center">
-                        <p>2nd Floor, Cove Hill Project, 1888 Charoen Krung Road, Bangkok 10120</p>
-                        <p>+66-82-451-5155</p>
-                        <p><a href="mailto:revivepilatesbkk@gmail.com">revivepilatesbkk@gmail.com</a></p>
-                        <p class="mb-1">
-                            <a class="d-inline-flex align-items-center text-white" href="https://web.facebook.com/people/Revive-Pilates-Studio-Wellness/61584033732719/?_rdc=1&amp;_rdr#" target="_blank">
-                                <i class="fab fa-facebook-f me-2"></i>
-                                Facebook
-                            </a>
-                        </p>
-                        <p class="mb-1">
-                            <a class="d-inline-flex align-items-center text-white" href="https://line.me/R/ti/p/%40revivepilates" target="_blank">
-                                <i class="fab fa-line me-2"></i>
-                                @revivepilates
-                            </a>
-                        </p>
-                        <p class="mb-1">
-                            <a class="d-inline-flex align-items-center text-white" href="https://www.instagram.com/revivepilatesbkk" target="_blank">
-                                <i class="fab fa-instagram me-2"></i>
-                                @revivepilatesbkk
-                            </a>
-                        </p>
+            </div>
+        </section>
+        <!-- FAQ-->
+        <section class="page-section" id="faq">
+            <div class="container">
+                <div class="text-center"><h2 class="section-heading text-uppercase">Frequently Asked Questions</h2></div>
+                <div class="trial-faq mx-auto">
+                    <div class="trial-faq-item">
+                        <h4 class="trial-faq-q">Do I need any Pilates experience?</h4>
+                        <p class="text-muted">No experience needed — many clients try Revive as complete beginners. Because every instructor is a licensed physical therapist, your trial starts with a posture and goals assessment so exercises are matched to your body from the start.</p>
+                    </div>
+                    <div class="trial-faq-item">
+                        <h4 class="trial-faq-q">What should I wear?</h4>
+                        <p class="text-muted">Comfortable, stretchy clothing you can move freely in. Grip socks are recommended for reformer work — bring your own or ask us about picking up a pair.</p>
+                    </div>
+                    <div class="trial-faq-item">
+                        <h4 class="trial-faq-q">Can my trial focus on a specific goal, like rehab or prenatal care?</h4>
+                        <p class="text-muted">Yes. Let your instructor know your focus — rehabilitation, prenatal/postnatal, sports performance, or general strength and mobility — when you book on LINE, and your session will be tailored around it.</p>
+                    </div>
+                    <div class="trial-faq-item">
+                        <h4 class="trial-faq-q">How do I book?</h4>
+                        <p class="text-muted">Message us on LINE (@revivepilates) with your preferred day and time, and we'll confirm your trial slot.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+        <!-- Repeated CTA band-->
+        <section class="trial-cta-band">
+            <div class="container text-center">
+                <h3 class="trial-cta-heading">Ready to feel the difference of one-on-one, physical-therapist-led Pilates?</h3>
+                <a class="btn btn-primary btn-xl text-uppercase mt-3" href="https://line.me/R/ti/p/%40revivepilates" target="_blank" data-gtag-event="contact_click" data-gtag-location="cta_band">Book Now</a>
             </div>
         </section>
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Revivepilatesbkk 2026</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <!-- line icon-->
-                        <a class="btn btn-dark btn-social mx-2" href="https://line.me/R/ti/p/%40revivepilates" aria-label="Line" target="_blank"><i class="fab fa-line"></i></a>
-                        <!-- facebook icon-->
+                    <div class="col-lg-6 text-lg-start">Copyright &copy; Revive Pilates Bangkok 2026</div>
+                    <div class="col-lg-6 text-lg-end">
+                        <a class="btn btn-dark btn-social mx-2" href="https://line.me/R/ti/p/%40revivepilates" aria-label="Line" target="_blank" data-gtag-event="contact_click" data-gtag-location="footer"><i class="fab fa-line"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="https://web.facebook.com/people/Revive-Pilates-Studio-Wellness/61584033732719/?_rdc=1&amp;_rdr#" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <!-- instagram icon-->
                         <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/revivepilatesbkk" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
                     </div>
                 </div>
             </div>
         </footer>
-        <!-- Portfolio Modals-->
-        <!-- Portfolio item 1 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/1.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Threads
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Illustration
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 2 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/2.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Explore
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Graphic Design
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 3 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/3.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Finish
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Identity
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 4 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/4.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Lines
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Branding
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 5 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/5.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Southwest
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Website Design
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 6 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/6.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Window
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Photography
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="/js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>

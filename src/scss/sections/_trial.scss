@@ -1,20 +1,20 @@
 //
-// Trial landing page ("/trial", "/trial/th") styling
+// Homepage styling ("/", "/en", "/th")
 //
-// A dedicated conversion page for trial-booking / paid-ads traffic —
-// same typography as the main site (Montserrat/Roboto Slab) and its own
-// hero, step list, offer callout and FAQ layout, but its own accent
-// colors (below) sampled from real studio photos instead of the site's
-// $primary yellow, per client feedback to match the actual space.
+// This template started as the /trial ads-landing page; the team decided
+// to make that design the homepage (see scripts/build-pug.js), so this
+// file — and the "trial" naming throughout it and its markup — is now
+// the site's only page styling, not a variant of some other homepage.
+// Left as "trial-*" internally rather than renamed, to limit the size of
+// that change; purely a naming legacy, has no effect on behavior.
 //
 
 // Palette sampled directly from real studio photos (src/assets/img/
 // portfolio/P1034054.jpg and src/assets/img/team/bute.jpg): the warm
 // greige plaster wall behind the "Revive" sign, and the honey-toned
 // birch wood of the actual reformer/chair equipment — instead of
-// Bootstrap's cool grey .bg-light and the site-wide bright yellow
-// $primary, so the trial page reads like the real room, not a generic
-// template. Scoped to .trial-page only — homepage keeps its palette.
+// Bootstrap's cool grey .bg-light and $primary yellow, so the page reads
+// like the real room, not a generic template.
 $trial-accent: #c19a5b;
 $trial-accent-dark: #a67f45;
 
